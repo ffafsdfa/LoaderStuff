@@ -1,0 +1,239 @@
+local ReviseLoaderScreenGui = Instance.new("ScreenGui")
+local MainLoaderFrame = Instance.new("Frame")
+local LoadorExitFrame = Instance.new("Frame")
+local LoadButton = Instance.new("TextButton")
+local UIGradient = Instance.new("UIGradient")
+local ExitButton = Instance.new("TextButton")
+local UIGradient_2 = Instance.new("UIGradient")
+local OptionsLabel = Instance.new("TextLabel")
+local TopLoaderorExitFrame = Instance.new("Frame")
+local GameInfo = Instance.new("Frame")
+local TopBarGamesFrame = Instance.new("Frame")
+local ImageLabel = Instance.new("ImageLabel")
+local InfoLabel = Instance.new("TextLabel")
+local WelcomeUserLabel = Instance.new("TextLabel")
+local VersionLabel = Instance.new("TextLabel")
+local GameLabel = Instance.new("TextLabel")
+
+ReviseLoaderScreenGui.Name = "ReviseLoaderScreenGui"
+ReviseLoaderScreenGui.Parent = game.CoreGui
+ReviseLoaderScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+local InfoOutlineLabel = Instance.new("UIStroke")
+InfoOutlineLabel.Name = "InfoOutlineLabel"
+InfoOutlineLabel.Parent = InfoLabel
+InfoOutlineLabel.Thickness = 1
+InfoOutlineLabel.Color = Color3.fromRGB(0, 0, 0)
+
+local WelcomeUserOutlineLabel = Instance.new("UIStroke")
+WelcomeUserOutlineLabel.Name = "WelcomeUserOutlineLabel"
+WelcomeUserOutlineLabel.Parent = WelcomeUserLabel
+WelcomeUserOutlineLabel.Thickness = 1
+WelcomeUserOutlineLabel.Color = Color3.fromRGB(0, 0, 0)
+
+local VersionOutlineLabel = Instance.new("UIStroke")
+VersionOutlineLabel.Name = "VersionOutlineLabel"
+VersionOutlineLabel.Parent = VersionLabel
+VersionOutlineLabel.Thickness = 1
+VersionOutlineLabel.Color = Color3.fromRGB(0, 0, 0)
+
+local GameLabelOutline = Instance.new("UIStroke")
+GameLabelOutline.Name = "VersionOutlineLabel"
+GameLabelOutline.Parent = GameLabel
+GameLabelOutline.Thickness = 1
+GameLabelOutline.Color = Color3.fromRGB(0, 0, 0)
+
+local OptionsLabelOutline = Instance.new("UIStroke")
+OptionsLabelOutline.Name = "OptionsLabelOutline"
+OptionsLabelOutline.Parent = OptionsLabel
+OptionsLabelOutline.Thickness = 1
+OptionsLabelOutline.Color = Color3.fromRGB(0, 0, 0)
+
+MainLoaderFrame.Name = "MainLoaderFrame"
+MainLoaderFrame.Parent = ReviseLoaderScreenGui
+MainLoaderFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+MainLoaderFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+MainLoaderFrame.BorderColor3 = Color3.fromRGB(40, 40, 40)
+MainLoaderFrame.BorderSizePixel = 3
+MainLoaderFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+MainLoaderFrame.Size = UDim2.new(0, 324, 0, 260)
+
+--
+local function makeDraggable(frame)
+    local UIS = game:GetService("UserInputService")
+    local dragToggle = nil
+    local dragSpeed = 0.25
+    local dragStart = nil
+    local startPos = nil
+
+    local function updateInput(input)
+        local delta = input.Position - dragStart
+        frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+
+    frame.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            dragToggle = true
+            dragStart = input.Position
+            startPos = frame.Position
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragToggle = false
+                end
+            end)
+        end
+    end)
+
+    frame.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement then
+            if dragToggle then
+                updateInput(input)
+            end
+        end
+    end)
+end
+
+makeDraggable(MainLoaderFrame)
+--
+
+LoadorExitFrame.Name = "LoadorExitFrame"
+LoadorExitFrame.Parent = MainLoaderFrame
+LoadorExitFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+LoadorExitFrame.BorderColor3 = Color3.fromRGB(40, 40, 40)
+LoadorExitFrame.Position = UDim2.new(0.0297640581, 0, 0.684615374, 0)
+LoadorExitFrame.Size = UDim2.new(0, 305, 0, 74)
+
+LoadButton.Name = "LoadButton"
+LoadButton.Parent = LoadorExitFrame
+LoadButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+LoadButton.BorderColor3 = Color3.fromRGB(40, 40, 40)
+LoadButton.BorderSizePixel = 2
+LoadButton.Position = UDim2.new(0.0330427326, 0, 0.344490677, 0)
+LoadButton.Size = UDim2.new(0, 140, 0, 40)
+LoadButton.Font = Enum.Font.RobotoMono
+LoadButton.Text = "Load"
+LoadButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+LoadButton.TextSize = 14.000
+
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(125, 125, 125)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(200, 200, 200))}
+UIGradient.Rotation = -90
+UIGradient.Parent = LoadButton
+
+ExitButton.Name = "ExitButton"
+ExitButton.Parent = LoadorExitFrame
+ExitButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+ExitButton.BorderColor3 = Color3.fromRGB(40, 40, 40)
+ExitButton.BorderSizePixel = 2
+ExitButton.Position = UDim2.new(0.521567225, 0, 0.344490677, 0)
+ExitButton.Size = UDim2.new(0, 138, 0, 40)
+ExitButton.Font = Enum.Font.RobotoMono
+ExitButton.Text = "Exit"
+ExitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ExitButton.TextSize = 14.000
+
+UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(125, 125, 125)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(200, 200, 200))}
+UIGradient_2.Rotation = -90
+UIGradient_2.Parent = ExitButton
+
+OptionsLabel.Name = "OptionsLabel"
+OptionsLabel.Parent = LoadorExitFrame
+OptionsLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+OptionsLabel.BackgroundTransparency = 1.000
+OptionsLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+OptionsLabel.BorderSizePixel = 0
+OptionsLabel.Position = UDim2.new(0.0329999998, 0, 0.100000001, 0)
+OptionsLabel.Size = UDim2.new(0, 45, 0, 14)
+OptionsLabel.Font = Enum.Font.RobotoMono
+OptionsLabel.Text = "Options"
+OptionsLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+OptionsLabel.TextSize = 14.000
+
+TopLoaderorExitFrame.Name = "TopLoaderorExitFrame"
+TopLoaderorExitFrame.Parent = LoadorExitFrame
+TopLoaderorExitFrame.BackgroundColor3 = Color3.fromRGB(189, 172, 255)
+TopLoaderorExitFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TopLoaderorExitFrame.BorderSizePixel = 0
+TopLoaderorExitFrame.Size = UDim2.new(0, 305, 0, 2)
+
+GameInfo.Name = "GameInfo"
+GameInfo.Parent = MainLoaderFrame
+GameInfo.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+GameInfo.BorderColor3 = Color3.fromRGB(40, 40, 40)
+GameInfo.Position = UDim2.new(0.0299999993, 0, 0.061999999, 0)
+GameInfo.Size = UDim2.new(0, 305, 0, 145)
+
+TopBarGamesFrame.Name = "TopBarGamesFrame"
+TopBarGamesFrame.Parent = GameInfo
+TopBarGamesFrame.BackgroundColor3 = Color3.fromRGB(189, 172, 255)
+TopBarGamesFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TopBarGamesFrame.BorderSizePixel = 0
+TopBarGamesFrame.Size = UDim2.new(0, 305, 0, 2)
+
+ImageLabel.Parent = GameInfo
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel.BorderSizePixel = 0
+ImageLabel.Position = UDim2.new(0.0524590164, 0, 0.131034479, 0)
+ImageLabel.Size = UDim2.new(0, 128, 0, 120)
+ImageLabel.Image = "rbxassetid://18519650536"
+
+InfoLabel.Name = "InfoLabel"
+InfoLabel.Parent = GameInfo
+InfoLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+InfoLabel.BackgroundTransparency = 1.000
+InfoLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+InfoLabel.BorderSizePixel = 0
+InfoLabel.Position = UDim2.new(0.032475505, 0, 0.0126207024, 0)
+InfoLabel.Size = UDim2.new(0, 52, 0, 20)
+InfoLabel.Font = Enum.Font.RobotoMono
+InfoLabel.Text = "Info: "
+InfoLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+InfoLabel.TextSize = 14.000
+
+WelcomeUserLabel.Name = "WelcomeUserLabel"
+WelcomeUserLabel.Parent = GameInfo
+WelcomeUserLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+WelcomeUserLabel.BackgroundTransparency = 1.000
+WelcomeUserLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+WelcomeUserLabel.BorderSizePixel = 0
+WelcomeUserLabel.Position = UDim2.new(0.491808474, 0, 0.131034479, 0)
+WelcomeUserLabel.Size = UDim2.new(0, 111, 0, 20)
+WelcomeUserLabel.Font = Enum.Font.RobotoMono
+WelcomeUserLabel.Text = "Welcome, ".. tostring(game.Players.LocalPlayer.DisplayName)
+WelcomeUserLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+WelcomeUserLabel.TextSize = 14.000
+
+VersionLabel.Name = "VersionLabel"
+VersionLabel.Parent = GameInfo
+VersionLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+VersionLabel.BackgroundTransparency = 1.000
+VersionLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+VersionLabel.BorderSizePixel = 0
+VersionLabel.Position = UDim2.new(0.491808474, 0, 0.427586198, 0)
+VersionLabel.Size = UDim2.new(0, 111, 0, 20)
+VersionLabel.Font = Enum.Font.RobotoMono
+VersionLabel.Text = "Version: 1.00"
+VersionLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+VersionLabel.TextSize = 14.000
+
+GameLabel.Name = "GameLabel"
+GameLabel.Parent = GameInfo
+GameLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GameLabel.BackgroundTransparency = 1.000
+GameLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+GameLabel.BorderSizePixel = 0
+GameLabel.Position = UDim2.new(0.491808474, 0, 0.289655179, 0)
+GameLabel.Size = UDim2.new(0, 111, 0, 20)
+GameLabel.Font = Enum.Font.RobotoMono
+GameLabel.Text = "Game: Da Hood"
+GameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+GameLabel.TextSize = 14.000
+
+LoadButton.MouseButton1Down:connect(function()
+    ReviseLoaderScreenGui:Destroy()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ffafsdfa/Revise/main/DaHood"))()
+end)
+
+ExitButton.MouseButton1Down:connect(function()
+    ReviseLoaderScreenGui:Destroy()
+end)
